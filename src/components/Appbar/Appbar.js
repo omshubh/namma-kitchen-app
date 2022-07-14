@@ -85,7 +85,7 @@ const Appbar = props => {
           component='div'
           sx={{ display: 'block', flexGrow: 1, justifyContent: 'flex-start' }}
         >
-          Amman meals
+          Namma kitchen
         </Typography>
         <Search>
           <SearchIconWrapper>

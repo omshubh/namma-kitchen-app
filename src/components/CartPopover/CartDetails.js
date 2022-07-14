@@ -7,7 +7,7 @@ import Box from '@mui/material/Box'
 
 import ItemDetailsInCart from '../ItemDetailsInCart/ItemDetailsInCart'
 
-function onRemoveFromCartClick (
+function onRemoveFromCartClick(
   cartItems,
   item,
   updateCartItems,
@@ -37,8 +37,8 @@ const CartDetails = props => {
     cartItems,
     updateCartItems,
     showInPage,
-    handleClose = () => {},
-    total
+    handleClose = () => { },
+    total, showExistinOrder = false
   } = props
 
   return (
@@ -50,6 +50,7 @@ const CartDetails = props => {
               <ItemDetailsInCart
                 key={index}
                 cartItem={cartItem}
+                showExistinOrder={showExistinOrder}
                 onRemoveFromCartClick={cartItem =>
                   onRemoveFromCartClick(
                     cartItems,
@@ -72,7 +73,7 @@ const CartDetails = props => {
           })}
 
           <ListItem>
-            <ListItemText primary='Total' secondary={`Rs.${total}`} sx={{}} />
+            <ListItemText primary='Total' secondary={total} sx={{}} />
           </ListItem>
         </List>
       </Box>

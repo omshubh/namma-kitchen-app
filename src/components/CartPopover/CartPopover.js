@@ -6,7 +6,7 @@ import CartDetails from './CartDetails'
 import { Button } from '@mui/material'
 import Snackbar from '@mui/material/Snackbar'
 
-function formatAMPM (date) {
+function formatAMPM(date) {
   var hours = date.getHours()
   var minutes = date.getMinutes()
   var ampm = hours >= 12 ? 'pm' : 'am'
@@ -40,7 +40,8 @@ const CartPopover = props => {
     const curentDate = new Date()
     const { time: ORDER_TIME, date: ORDER_DATE } = formatAMPM(curentDate)
     const orderObject = {
-      orderId: orders.length,
+      id: orders.length + 1,
+      orderId: orders.length + 1,
       totalAmount: total,
       items: Object.values(cartItems),
       ORDER_TIME,
@@ -65,7 +66,7 @@ const CartPopover = props => {
           cartItems={cartItems}
           updateCartItems={updateCartItems}
           handleClose={handleClose}
-          total={total}
+          total={`Rs.${total}`}
         />
         <div
           style={{

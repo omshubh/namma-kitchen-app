@@ -1,18 +1,17 @@
 import { useEffect, useState } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
-import items from './mockData/items'
+import { items, orders as ordersData } from './mockData/mockData'
 import ItemsMenu from './components/ItemsMenu/ItemsMenu'
 import Orders from './components/Orders/Orders'
-//import './App.css';
 
-function App () {
+function App() {
   const [searchTerm, setSearchTerm] = useState('')
   const [filteredData, setFilteredData] = useState(items)
   const [cartItems, setCartItems] = useState({})
-  const [orders, setOrders] = useState([])
+  const [orders, setOrders] = useState(ordersData)
 
-  function filterItem (searchTerm1) {
+  function filterItem(searchTerm1) {
     setSearchTerm(searchTerm1)
     const filterBasedOnSearchTerm = items.filter(
       item =>

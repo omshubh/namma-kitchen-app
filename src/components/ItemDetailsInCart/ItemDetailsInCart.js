@@ -16,14 +16,14 @@ function checkIsVeg(itemType) {
 }
 
 const ItemDetailsInCart = (props) => {
-  const { onRemoveFromCartClick, cartItem, updateCartItemQuantity } = props;
+  const { onRemoveFromCartClick, cartItem, updateCartItemQuantity, showExistinOrder } = props;
   const { NAME, PRICE, TYPE, quantity, id } = cartItem;
   const isVeg = checkIsVeg(TYPE);
 
   return (
     <div>
       <ListItem
-        secondaryAction={
+        secondaryAction={showExistinOrder ? null :
           <IconButton edge="end" aria-label="delete">
             <DeleteIcon onClick={() => onRemoveFromCartClick(cartItem)} />
           </IconButton>
@@ -36,10 +36,15 @@ const ItemDetailsInCart = (props) => {
           primary={NAME}
           secondary={`Rs.${PRICE}`}
         />
-        <ListItemButton>
-          <QuantityCounter quantity={quantity} setQuantity={(quantity) => { updateCartItemQuantity(id, quantity) }} />
-        </ListItemButton>
-
+        {
+          showExistinOrder ?
+            <ListItemText
+              primary={quantity}
+            /> :
+            <ListItemButton>
+              <QuantityCounter quantity={quantity} setQuantity={(quantity) => { updateCartItemQuantity(id, quantity) }} />
+            </ListItemButton>
+        }
       </ListItem>
     </div>
   );
